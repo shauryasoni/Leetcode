@@ -1,44 +1,33 @@
-from typing import List
-class Solution:
-    
-    def os(self,board,visited,group,r,c,i,j) :
-        
-        if i == 0 or i == r-1 :
-            return False
-        if j == 0 or j == c-1 :
-            return False
-        if board[i][j] == "1" :
-            return False
-        if (i,j) in visited :
+ans = []
+def rec(valid,res,missing,s,target,index) :
+    global ans
+    if len(res) > missing :
+        return False
+    if len(res) == missing :
+        if s == target :
+            ans.append(tuple(res))
             return True
-        elif board[i][j] == "O":
-            visited.add((i,j))
-            group.append((i,j))
-            r = self.os(board,visited,group,r,c,i,j+1)
-            l = self.os(board,visited,group,r,c,i,j-1)
-            u = self.os(board,visited,group,r,c,i-1,j)
-            d = self.os(board,visited,group,r,c,i+1,j)
-        
-            return True or r or l or u or d
-        
-        
-    def solve(self, board: List[List[str]]) -> None:
+    if s > target :
+        return False
+    else :
+        for i in range(index,len(valid)) :
+            res.append(valid[i])
+            something = rec(valid,res,missing,s+valid[i],target,i)
+            if something == True :
+                return True
+            res.pop(-1)
+        return
+    
+    
 
-        visited = set()
-        captured = []
-        r = len(board)
-        c = len(board[0])
-        for i in range(1,len(board)-1) :
-            for j in range(1, len(board[0])-1) :
-                if (i,j) in visited :
-                    continue
-                    
-                elif board[i][j] == "O" :
-                    group = []
-                    corno = self.os(board,visited,group,r,c,i,j)
-                    if corno == True :
-                        captured.append(group)
-                        print(group)
-        
-        
-print(Solution().solve([["X","X","X","X"],["X","O","X","X"],["X","X","O","X"],["X","O","X","X"]]) )
+def solution(A, F, M):
+    global ans
+    # write your code in Python 3.6
+    length = len(A)
+    s = sum(A)
+    total = (M*1.0) * (length + F)
+    d = {}
+    rec([1,2,3,4,5,6],[],F,0,total-s,0)
+    print(ans)
+    
+print(solution([1,5,6],4,3))
