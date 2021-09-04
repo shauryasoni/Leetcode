@@ -14,3 +14,5 @@ class Solution:
                     break
         print(d)
         return d[0]
+
+#This is the dynamic programming approach
