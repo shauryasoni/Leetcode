@@ -1,58 +1,33 @@
-graph = {
-    1:[2,3],2:[1,4],3:[1,5],4:[2],5:[3],6:[],7:[8],8:[7],9:[]
-    }
-def dfs(graph) :
-    
-    count  = 0
-    visited = set()
-    stack = []
-    nodes= 0
-    for i in graph :
-        if i in visited :
-            continue
-        else :
-            stack.append(i)
-            while stack!=[] :
-                node = stack.pop()
-                nodes+=1
-                visited.add(node)
-                for i in graph[node] :
-                    if i in visited :
-                        continue
-                    stack.append(i)
-                #print(stack)
-            if nodes>=2:
-                count+=1
-                nodes = 0
-    print(count)
+from typing import List
+class Solution:
+
+    def wordBreak(self, s: str, wordDict: List[str],memo={}) -> bool:
+        if(s == " "*len(s)) : 
+            return True
+        match = False
+        for i in wordDict :
+            if i in s :
+                match  = True
+                break
+        if match ==False :
+            return False  
+
+        if(s in memo.keys())  :
+            return memo[s]
         
-#dfs(graph)
+        ans = set()
+        for i in wordDict : 
+            if i in s :  
+                new = s.replace(i," "*len(i),1)
+                value =( self.wordBreak(new,wordDict,memo)) 
+                if new not in memo.keys():
+                    memo[new] = value
+                ans.add(value)
+                if value == True :
+                    break
 
-def bfs(graph) :
-    visited = set()
-    level = []
-    frontier = []
-    expanded = 0
-    frontier.append(1)
-    for i in graph :
-        if i not in visited :
-            frontier.append(i)
-            print(frontier,expanded)
+        if True in ans : 
+            return True 
         else :
-            continue
-        while frontier!=[] :
-
-            for node in frontier :
-
-                if node not in visited:
-                    visited.add(node)
-                    for v in graph[node] :
-                        if v not in visited :
-                            level.append(v)
-
-            frontier = level
-            expanded+=1
-            print(frontier,expanded)
-            level = []
-bfs(graph)               
-
+            return False
+print(Solution().wordBreak("catsanddogs",["cats","san","dogs"]))
