@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     
     def rec(self,nums,target,s,l,d) :

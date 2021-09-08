@@ -1,4 +1,9 @@
-"""class Solution:
+"""
+Given a matrix of N rows and M columns. From m[i][j], we can move to m[i+1][j], if m[i+1][j] > m[i][j], or can move to m[i][j+1] if m[i][j+1] > m[i][j]. The task is print longest path length if we start from (0, 0).
+
+Recursive solution :
+
+class Solution:
     # @param A : list of list of integers
     # @return an integer
     def rec(self,A,i,j,last,count,d):
@@ -28,6 +33,8 @@
             return -1
         else :
             return mlength
+            
+Iterative solution :
 """
 class Solution :
     def solve(self, A) :
