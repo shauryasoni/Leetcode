@@ -62,6 +62,7 @@ class Solution :
                     if dp[i][j-1]!=-1 :
                         e2 = dp[i][j-1] + 1
                 dp[i][j] = max(e1,e2)
+                
         return dp[len(A)-1][len(A[0])-1]
         for i in dp :
             print(i)
