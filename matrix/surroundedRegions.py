@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     
     def os(self,board,visited,group,r,c,i,j) :
