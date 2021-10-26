@@ -12,14 +12,14 @@ class Solution:
             d[(amount,index)] =0
             return d[(amount,index)]
         
-        if coins == [] and amount!=0 :
+        # if coins == [] and amount!=0 :
             
-            d[(amount,index)] = 0
-            return d[(amount,index)]
-        if coins == [] and amount == 0 : 
+        #     d[(amount,index)] = 0
+        #     return d[(amount,index)]
+        # if coins == [] and amount == 0 : 
             
-            d[(amount,index)] = 1
-            return d[(amount,index)]
+        #     d[(amount,index)] = 1
+        #     return d[(amount,index)]
         else :
             d[(amount,index)] = 0
             for i in range(index,-1,-1) :

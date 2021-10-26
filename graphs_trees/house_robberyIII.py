@@ -23,7 +23,7 @@ class Solution :
                 return d[node]
            
             else :
-                d[node] = max((node.val + self.maxtheft(node.left.left,d) + self.maxtheft(node.left.right,d) +                   self.maxtheft(node.right.right,d)+self.maxtheft(node.right.left,d))  ,(self.maxtheft(node.left,d) + self.maxtheft(node.right,d)))
+                d[node] = max((node.val + self.maxtheft(node.left.left,d) + self.maxtheft(node.left.right,d) +self.maxtheft(node.right.right,d)+self.maxtheft(node.right.left,d))  ,(self.maxtheft(node.left,d) + self.maxtheft(node.right,d)))
                 return d[node]
     def rob(self, root) -> int:
         d = {}

@@ -1,7 +1,7 @@
 class Solution:
     def dfs(self,node,visited,adj,previous)  :
         if node in visited : 
-            return 1
+            return 1 #Return 1 if cycle exists
         
         visited.add(node)
         for i in adj[node] :
